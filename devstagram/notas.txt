@@ -1,0 +1,48 @@
+* Creacion de proyecto nuevo con comando teniendo Docker
+
+    "curl -s https://laravel.build/Nombre-de-tu-proyecto | bash"
+
+    Integracion de puertos
+
+    Al crear el proyecto me encontre con choque de puertos por lo que los cambiare 
+    agregando el puerto con el parametro 
+    FORWARD_DB_PORT=3307
+
+* Exploracion de carpetas
+
+App 
+    - Encontramos los controladores
+    - Modelos
+database
+    - Factoris
+    - Migraciones
+    - Seders
+public
+    - Archivos de JS una ves compilados
+    - Todo lo que los usuarios pueden ver
+    - Colocamos hojas de estilo
+    _ Colocamos JS
+resorces
+    - css
+    - JS
+views
+    - Model Viw Controles
+routes
+    - Rutas 
+    - Llamadas a APIS
+storages
+    - Se alacena la informacion de los usuarios como fotos.
+    - Se recomineda servicios de storage
+test
+    - Pruebas unitarias
+vendor
+    - Es la carpeta de compouser tanto para que laravel funcione
+    - Podemos agregar dependencias adicionales desde aqui
+    - El composer.json es donde se guardan las dependencias del proyecto que se estan implementando
+.env
+    - Estructura del proyecto
+    - Puertos de database
+    - Configuracion de mail
+    - Puertos y variables de entorno
+
+

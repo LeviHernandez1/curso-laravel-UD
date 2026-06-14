@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+{{-- Directivas empiezan con @extends donde toma lo que vive en el templade view/layouts/app que es la estructura principal del HTML--}} 
+@extends('layouts.app')
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+@section('titulo')
+    Pagina Principal
+@endsection
 
-    </head>
-    <body>
-        <nav>
-            <a href="/">Principal</a>
-            <a href="/nosotros">Nosotros</a>
-            <a href="/tienda">Tienda</a>
-        </nav>
-        <h1>Pagina principal</h1>
-    </body>
-</html>
+@section('contenido')
+    Contenido de esta paguina
+@endsection

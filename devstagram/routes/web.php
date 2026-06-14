@@ -6,12 +6,6 @@ Route::get('/', function () {
     return view('principal');
 });
 
-Route::get('/nosotros', function () {
-    return view('nosotros');
+Route::get('/crear-cuenta', function () {
+    return view('auth.registrar');
 });
-
-Route::get('/tienda', function () {
-    return view('tienda');
-});
-
-

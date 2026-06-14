@@ -45,4 +45,56 @@ vendor
     - Configuracion de mail
     - Puertos y variables de entorno
 
+TailwinCSS 
 
+Para correr el css con sail npm run dev en la vercion de Tailwind CSS v4 que vemos en app.css podemosnotar
+que tenemos que asgregar estas lineas de copdigo para poder corer el css adecuadamente :
+@source '../resources/**/*.blade.php';
+@source '../js/**/*.js';
+
+MVC (Modelo Vista Controlador) 
+    Modelo 
+        - Encargado de todas las interacciones en la base de datos, obtener datos, actualizarlos y eliminarlos.
+        - El Modelo se encarga de consultar una base de datos, obtiene la informacion per no la muestra, eso es trabajo de la vista.
+        - El Modelo tampoco se encarga de de actualizar la información directamente; es el Controlador quien decide cuándo llamarlo.
+    Vista
+        - Se encanrga de todo lo que se ve en pantalla (HTML)
+        - Laravel tiene un Template Engine LLamado Blade para mostrar los datos.
+        - Si utlizamos React, Vue, Angular, Svelte, estos serían tu vista.
+        - El modelo consulta la base de datos, pero es por medio del Controlador que se decide que Vista hay que llamar y que datos presentar.
+    Controlador
+        - Es el que comunica modelo y vista; antes de que el Modelo consulte la base de datos el Controlador es el encargado de llamar un Modelo en especifico.
+        - Una vez consultado el Modelo, el controlador recibe esa informacion, manda llamar a la vista y le pasa la informacion.
+        - El controlador es el que manda llamar la vista y modelos, que se requieren en cada parte de tu aplicacion.
+    Router en MVC
+        - Es el encargado de registrar todas las URL's o Endpoints que va a soportar nuestras aplicaciones.
+        
+--------------------------------------------------------------------------------
+
+DIRECTIVAS
+
+@extens('')
+    Nos ayuda a tomar un template general para no repetir estructuras identicas del dom como el encabezado o el nav
+
+@section / @endsection
+    Lo qu este en medio de esta directiva nos permitira escrivir codigo que podemos inllectado en @yield
+
+@yield('')
+    Nos ayuda con los titulos, registra el contenido como un contenedor
+
+@php / @endphp
+    Nos permite incorporar codigo php dentro del blade.
+{{}}
+    Podemos incorporar logica php en el blade por ejemplo una simple suma mostraria el resultado
+    {{ 2 + 2 }} imprime en pantalla 4
+
+--------------------------------------------------------------------------------
+
+HELPERS
+
+now()
+    para sistituir la sintaxis de php como esta
+    @php echo date ('Y') @endphp
+    optamos por now
+    formato de fecha actual tomado del sistema operativo {{ now() }} imprime " 2026-06-14 03:48:09 "
+    variante solo para mostar año {{ now()->year }}

@@ -7,5 +7,5 @@ Route::get('/', function () {
 });
 
 Route::get('/crear-cuenta', function () {
-    return view('auth.registrar');
+    return view('auth.register');
 });

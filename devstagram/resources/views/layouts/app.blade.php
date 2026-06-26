@@ -9,7 +9,7 @@
         @vite('resources/css/app.css')
     </head>
     <body>
-        <header class="p-5 boder-b bg-white shadow">
+        <header class="p-5 boder-b bg-white shadow-xl">
             <div class="container mx-auto flex justify-between items-center">
                 <h1 class="text-3xl font-black">
                     DevStagram
@@ -23,7 +23,7 @@
                 </nav>
             </div>        
         </header>
-        <main class="container mx-auto mt-10">
+        <main class="p-5 bg-blue-100">
             <h2 class="font-black text-center text-3xl mb-10">
                 @yield('titulo')
             </h2>

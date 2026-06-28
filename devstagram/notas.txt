@@ -98,3 +98,78 @@ now()
     optamos por now
     formato de fecha actual tomado del sistema operativo {{ now() }} imprime " 2026-06-14 03:48:09 "
     variante solo para mostar año {{ now()->year }}
+
+
+Tipos de Request en HHTTP
+
+En Http existen diferentes tipos de Request o otios de peticiones:
+GET, POST, PUT, PATCH, y DELETE.
+
+GET
+    Es el mas simple; cuando se visita un sitio web por default es un GET
+    Solo se utiliza para recuperar datos pero nunca debe enviar datos.
+
+POST 
+    Se utiliza cuando mandas datos a un servidor;esto incluye informacion que llenas en formularios o buscadores.
+
+PUT
+    Es utilizado para actualizar un elemento; pero si no existe crea uno nuevo; PUT es un remplazo total de un registro
+    Pero debemos enviar una actualizacion de todos los registros.
+
+PATCH 
+    Es utilizado para actualizar parcialmente un elemento o recurso, solo un campo de todo un registro.
+
+DELETE
+    Se utiliza para eliminar un recurso o elemento.
+
+Controlers en Larave 
+    Los controlers van a ayudar a tener un código mejor orgabizado,
+    además de una separación mayor en la funcionalidad de las aplicaciones y sitios web.
+    Laravel tiene una convencion a la hora de nombrar los metodos de mis controllers conocida como Resourse Controllers.
+    Esta convencion ayuda bastante para tener todo mejor organizado.
+
+    Acciones de controladores de Resourse 
+
+    Verbo HTTP      |    URI                    |   Acción  | Ruta
+    ----------------------------------------------------------------------
+        GET         | /clientes                 |   index   |clientes.index
+        GET         | /clientes/create          |   create  |clientes.create
+        POST        | /clientes                 |   store   |clientes.store
+        GET         | /clientes/{cliente}       |   show    |clientes.show
+        GET         | /clientes/{cliente}/edit  |   edit    |clientes.edit
+        PUT/PATCH   | /clientes/{cliente}       |   update  |clientes.update
+        DELETE      | /clientes/{cliente}       |   destroy |clientes.destroy
+
+Rutas nombradas
+
+    Nos ayudan a poder nombrar rutas para poder tener una mejor forma de tener rutas en codigo al renombrar.
+    
+    Antes:
+    WEB.php     = Route::get('/crear-cuenta', [RegisterController::class, 'index']);
+    BLADE.php   = <a href="/crear-cuenta" ></a>
+
+    Despues:
+    BEB.php     = Route::get('/crear-cuenta', [RegisterController::class, 'index'])->name('register');
+    BLADE.php   = <a action="{{ route('register')}}" ></a>
+
+Proteccion de datos
+    Para poder proteger los datos de un formulario ingresado implementamos dentro de los form:
+    <form >
+        @csrf
+
+Database 
+    Manera de debugear variables dd detiene los procesos en laravel e imprime los valores.
+    dd('Post ...');
+    Dentro del controlador podemos incorporarlo para consultar.
+    
+    class clasePublica extends Controller 
+    {
+        public function store(Request $request)
+        {
+            dd($request)
+        }
+    }
+    Para poder debugear aspectos mas puntuales y especificos de campos
+    dd($request->get('username'))
+
+    

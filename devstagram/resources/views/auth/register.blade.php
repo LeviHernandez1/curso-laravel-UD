@@ -11,8 +11,9 @@
         </div>
 
         <div class = "md:w-4/12 bg-white p-6 rounded-lg">
-            <form>
-                <div class="md-5">
+            <form href="{{route('register')}}" method="POST">
+                @csrf
+                <div class="md-5 p-2">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">
                         Nombre
                     </label>
@@ -22,10 +23,11 @@
                         name="name"
                         type="text"
                         placeholder="Tu Nombre"
-                        class= "boder p-3 w-full rounded-lg"
+                        class= "border border-gray-300 p-3 w-full rounded-lg"
                     />
                 </div>
-                <div class="md-5">
+                @csrf
+                <div class="md-5 p-2">
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">
                         Username
                     </label>
@@ -35,10 +37,11 @@
                         name="username"
                         type="text"
                         placeholder="Tu Nombre de Usuario"
-                        class= "boder p-3 w-full rounded-lg"
+                        class= "border border-gray-300 p-3 w-full rounded-lg"
                     />
                 </div>
-                <div class="md-5">
+                @csrf
+                <div class="md-5 p-2">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
                         Email
                     </label>
@@ -48,10 +51,11 @@
                         name="email"
                         type="email"
                         placeholder="Tu email de registro"
-                        class= "boder p-3 w-full rounded-lg"
+                        class= "border border-gray-300 p-3 w-full rounded-lg"
                     />
                 </div>
-                <div class="md-5">
+                @csrf
+                <div class="md-5 p-2">
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
                         Pasword
                     </label>
@@ -61,10 +65,11 @@
                         name="password"
                         type="text"
                         placeholder="Tu password de registro"
-                        class= "boder p-3 w-full rounded-lg"
+                        class= "border border-gray-300 p-3 w-full rounded-lg"
                     />
                 </div>
-                <div class="md-5">
+                @csrf
+                <div class="md-5 p-2">
                     <label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">
                         Repetir Pasword
                     </label>
@@ -74,10 +79,10 @@
                         name="password_confirmation"
                         type="text"
                         placeholder="Repite tu password"
-                        class= "boder p-3 w-full rounded-lg"
+                        class= "border border-gray-300 p-3 w-full rounded-lg"
                     />
                 </div>
-
+                <br>
                 <input
                     type="submit"
                     value="Crear Cuenta"

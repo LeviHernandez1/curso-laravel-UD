@@ -26,7 +26,6 @@
                         class= "border border-gray-300 p-3 w-full rounded-lg"
                     />
                 </div>
-                @csrf
                 <div class="md-5 p-2">
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">
                         Username
@@ -40,7 +39,6 @@
                         class= "border border-gray-300 p-3 w-full rounded-lg"
                     />
                 </div>
-                @csrf
                 <div class="md-5 p-2">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
                         Email
@@ -54,7 +52,6 @@
                         class= "border border-gray-300 p-3 w-full rounded-lg"
                     />
                 </div>
-                @csrf
                 <div class="md-5 p-2">
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
                         Pasword
@@ -68,7 +65,6 @@
                         class= "border border-gray-300 p-3 w-full rounded-lg"
                     />
                 </div>
-                @csrf
                 <div class="md-5 p-2">
                     <label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">
                         Repetir Pasword

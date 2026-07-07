@@ -43,7 +43,8 @@
                         name="username"
                         type="text"
                         placeholder="Tu Nombre de Usuario"
-                        class= "border border-gray-300 p-3 w-full rounded-lg"
+                        class= "border border-gray-300 p-3 w-full rounded-lg @error('name') border-red-500
+                        @enderror"
                     />
                     @error('username')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
@@ -61,7 +62,8 @@
                         name="email"
                         type="email"
                         placeholder="Tu email de registro"
-                        class= "border border-gray-300 p-3 w-full rounded-lg"
+                        class= "border border-gray-300 p-3 w-full rounded-lg @error('name') border-red-500
+                        @enderror"
                     />
                     @error('email')
                         <p class=" bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
@@ -79,7 +81,8 @@
                         name="password"
                         type="text"
                         placeholder="Tu password de registro"
-                        class= "border border-gray-300 p-3 w-full rounded-lg"
+                        class= "border border-gray-300 p-3 w-full rounded-lg @error('name') border-red-500
+                        @enderror"
                     />
                     @error('password')
                         <p class=" bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">

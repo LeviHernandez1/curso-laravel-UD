@@ -172,4 +172,50 @@ Database
     Para poder debugear aspectos mas puntuales y especificos de campos
     dd($request->get('username'))
 
-    
+ --------------------------------------------------------------------------------
+
+Para obtener los mensajes de Validacion de Laravel en español
+
+Se ontienen por medio de git.
+clonar el repositorio en lang que :
+
+git clone https://github.com/MarcoGomesr/laravel-validation-en-espanol.git lang
+
+Para cambiar el nombre es necesario cambiar el lenguaje del proyecto en app.php donde 
+se actualiza el predefinido de ingles
+
+'locale' => env('APP_LOCALE', 'en'),
+
+a español
+'locale' => 'es',
+
+ --------------------------------------------------------------------------------
+
+Persistencia en formularios al mostrar los errores en los campos y permanecer los inputs con lo que 
+el usuario escribe utilizamos value para el valor que dejaremos persistir.
+
+Desde el blade .
+<input 
+    id="name"
+    name="name"
+    value={{ old('name') }}
+/>
+
+ --------------------------------------------------------------------------------
+
+Validaciones
+
+Sintaxis de las validaciones podemos escribirlas en dos formatos diferentes en el controller.
+
+    1. Con separadores de "|" podemos hacerlo uno sobre el otro en una misma linea:
+        $data = $request->validate([
+            'name' => 'required|min:5|max:7',
+        ]);
+    2. Con forma de arreglo entre []:
+        $data = $request->validate([
+            'name' => ['required','min:5','max:7'],
+        ]);
+
+Para desavilitar la validacion de HTML5 por la de el distribuidor se agregan a las etiquetas como form "novalidate"
+    Ejemplo: 
+        <form href="{{route('register')}}" method="POST" novalidate>

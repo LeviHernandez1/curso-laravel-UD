@@ -21,7 +21,10 @@ class RegisterController extends Controller
         //     'name' => 'required',
         // ]);
         $data = $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:5|max:30',
+            'username' => 'required|unique:users|min:3|max:20',
+            'email' => 'required|unique:users|email|max:60',
+            'password' => 'required',
         ]);
     }
 }

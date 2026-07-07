@@ -219,3 +219,27 @@ Sintaxis de las validaciones podemos escribirlas en dos formatos diferentes en e
 Para desavilitar la validacion de HTML5 por la de el distribuidor se agregan a las etiquetas como form "novalidate"
     Ejemplo: 
         <form href="{{route('register')}}" method="POST" novalidate>
+
+ --------------------------------------------------------------------------------
+BASE DE DATOS
+
+Migraciones
+    Las migraciones se les conce como el control de versiones de tu base de datos; de esta forma se puede crear la base de 
+    datos y compartir el diseño con el equipo de trabajo.
+
+    Si deseas agregar nuevas tablas o columnas a una tabla existente, puedes hacerlo con una nueva migracion, si el resultado 
+    no fue el deseado, puedes revertir esta migracion.
+
+Comandos utilices 
+    Correr migraciones 
+        sail php artisan migrate (Tambien se puede con "sail artisan migrate" )
+    Regresar al estado anterior de la migracion realizada
+        sail artisan migrate:rollback
+    Regresar al estado anterior a ejecutar n cantidad de migraciones
+        sail artisan migrate:rollback --step=5
+    Para crear una migracion
+        sail php artisan make:migration Nombre_migracion (Tambien se puede con "sail artisan make:migration Nombre_migracion")
+
+Entrar a las bases de datos por terminal
+    Con MySql "sail mysql -U"
+    Con Postgre "sail psql"

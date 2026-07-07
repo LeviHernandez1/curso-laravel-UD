@@ -243,3 +243,20 @@ Comandos utilices
 Entrar a las bases de datos por terminal
     Con MySql "sail mysql -U"
     Con Postgre "sail psql"
+
+Convenciones en password
+Desde laravel prodemos tener la confirmacion del pasword por medio de el name de ambos inputs deben llamarse asi .
+
+En el blade para el primer pasword:
+    <input 
+        id="password"
+        name="password"
+En el blade para el segundo password donde se debe confirmar:
+    <input 
+        id="password_confirmation"
+        name="password_confirmation"
+
+En el Controller tenemos que indicar la regla de confirmacion.
+    $data = $request->validate([
+            'password' => 'required|confirmed',
+        ]);

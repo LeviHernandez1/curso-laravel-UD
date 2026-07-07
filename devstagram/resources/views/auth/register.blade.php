@@ -25,7 +25,7 @@
                         placeholder="Tu Nombre"
                         class= "border border-gray-300 p-3 w-full rounded-lg @error('name') border-red-500
                         @enderror"
-                        value={{ old('name') }}
+                        value="{{ old('name') }}"
                     >
                     @error('name')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
@@ -43,8 +43,9 @@
                         name="username"
                         type="text"
                         placeholder="Tu Nombre de Usuario"
-                        class= "border border-gray-300 p-3 w-full rounded-lg @error('name') border-red-500
+                        class= "border border-gray-300 p-3 w-full rounded-lg @error('username') border-red-500
                         @enderror"
+                        value="{{ old('username') }}"
                     >
                     @error('username')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
@@ -62,8 +63,9 @@
                         name="email"
                         type="email"
                         placeholder="Tu email de registro"
-                        class= "border border-gray-300 p-3 w-full rounded-lg @error('name') border-red-500
+                        class= "border border-gray-300 p-3 w-full rounded-lg @error('email') border-red-500
                         @enderror"
+                        value="{{ old('email') }}"
                     >
                     @error('email')
                         <p class=" bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
@@ -79,9 +81,9 @@
                     <input 
                         id="password"
                         name="password"
-                        type="text"
+                        type="password"
                         placeholder="Tu password de registro"
-                        class= "border border-gray-300 p-3 w-full rounded-lg @error('name') border-red-500
+                        class= "border border-gray-300 p-3 w-full rounded-lg @error('password') border-red-500
                         @enderror"
                     >
                     @error('password')
@@ -99,7 +101,7 @@
                     <input 
                         id="password_confirmation"
                         name="password_confirmation"
-                        type="text"
+                        type="password"
                         placeholder="Repite tu password"
                         class= "border border-gray-300 p-3 w-full rounded-lg"
                     >

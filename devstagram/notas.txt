@@ -240,6 +240,10 @@ Migraciones
             sail artisan migrate:rollback
         Regresar al estado anterior a ejecutar n cantidad de migraciones
             sail artisan migrate:rollback --step=5
+        Solo borra y deshace todas las tablas mediante los métodos down(), dejando la base de datos vacia
+            sail php artisan migrate:reset
+        Hace exactamente lo mismo pero además vuelve a ejecutar todas las migraciones con migrate de inmediato.
+            sail php artisan migrate:refresh
         Para crear una migracion
             sail php artisan make:migration Nombre_migracion (Tambien se puede con "sail artisan make:migration Nombre_migracion")
 
@@ -294,7 +298,7 @@ Modelos
         Es importante mencionar que en los modelos la seguridad con los pasword se definen aqui.
         Laravel 10 
             Podemos hashear el pasword desde el controller
-                use Illuminate\Support\Facades\Hash;
+                use Illuminate\Support\Facades\Hash; // funciones de laravel 
                 User::create([
                     // Arreglos asociativos para obtener informacion del objeto es con request
                     'name' => $request->name,
@@ -317,4 +321,15 @@ Modelos
                     ];
                 }
         
+Datos unitcos, consulta desde la base de datos.
+    Las verciones anteriores necesitavan indicar un Modificar al request en el controller
+        // Modificar el Request
+        $request->request->add(['username'=>Str::slug($request->username)]);
+    La nueva vercion podemos realizar esto :
+        $data = $request->validate([
+            'username' => 'required|unique:users|min:3|max:20',
+        ]);
+        User::create([
+            'username' =>Str::slug($request->username),
+        ]);
 

@@ -38,11 +38,14 @@ class RegisterController extends Controller
             //Para poder obtener el Username en minusculas se puede hacer de la siguiente manera 
             //'username' =>Str::lower($request->username),
             //Para poder obtener el Username en minusculas y sin espacios se puede hacer de la siguiente manera como URL
-            //'username' =>Str::slug($request->username), // Se perdio el unique y pemite registros con el mismo nombre de usuario
-            'username' =>Str::lower($request->username),// Con lower logramos que no se pierda el unique y pero se pierde los guiones como url
+            'username' =>Str::slug($request->username), // Se perdio el unique y pemite registros con el mismo nombre de usuario, pero al agregarle a la migracion users que sera unique se soluciona.
+            //'username' =>Str::lower($request->username),// Con lower logramos que no se pierda el unique y pero se pierde los guiones como url
             'email' => $request->email,
             //'password' => $request->password,
             'password' => Hash::make($request->password),
         ]);
+        // Redireccionar
+        //Laravel ya cuenta con la funcionalidad de redireccionamiento a rutas usando un helper.
+        return redirect()->route('posts.index');
     }
 }

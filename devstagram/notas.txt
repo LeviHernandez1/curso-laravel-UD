@@ -230,15 +230,22 @@ Migraciones
     Si deseas agregar nuevas tablas o columnas a una tabla existente, puedes hacerlo con una nueva migracion, si el resultado 
     no fue el deseado, puedes revertir esta migracion.
 
-Comandos utilices 
-    Correr migraciones 
-        sail php artisan migrate (Tambien se puede con "sail artisan migrate" )
-    Regresar al estado anterior de la migracion realizada
-        sail artisan migrate:rollback
-    Regresar al estado anterior a ejecutar n cantidad de migraciones
-        sail artisan migrate:rollback --step=5
-    Para crear una migracion
-        sail php artisan make:migration Nombre_migracion (Tambien se puede con "sail artisan make:migration Nombre_migracion")
+    Comandos utilices 
+        Correr migraciones 
+            sail php artisan migrate (Tambien se puede con "sail artisan migrate" )
+        Regresar al estado anterior de la migracion realizada
+            sail artisan migrate:rollback
+        Regresar al estado anterior a ejecutar n cantidad de migraciones
+            sail artisan migrate:rollback --step=5
+        Para crear una migracion
+            sail php artisan make:migration Nombre_migracion (Tambien se puede con "sail artisan make:migration Nombre_migracion")
+
+    Dentro de las migraciones.
+        Se crearon dos metodos al crear una nueva migracion, dentro de uno se escribe lo que se crea y en el otro lo mismo pero para eliminarlo
+            Metodo Up :
+                Se ejecuta cuando corremos el comando " sail artisan make:migration "
+            Metodo down:
+                Se ejecuta cuando corremos un rollback
 
 Entrar a las bases de datos por terminal
     Con MySql "sail mysql -U"
@@ -260,3 +267,48 @@ En el Controller tenemos que indicar la regla de confirmacion.
     $data = $request->validate([
             'password' => 'required|confirmed',
         ]);
+
+Eloquent (El ORM de Laravel)
+    ORM (Object Relacional Mapper)
+    Laravel incluye su propio ORM que hace muy sencillo interactuar con la base de datos.
+    Ya biene instalado en laravel.
+    En Eloquent cada tabla, tiene su propio modelo; ese modelo interactua unicamente con esa 
+    tabla y tiene las fuinciones necesarioas para crear registros, obtenerlos, actualizarlos y eliminarlos.
+
+Modelos
+    Los modelos en Eloquen para las bases de datos se crean con el comando:
+    " sail php artisan make:model Nombre_del_modelo " el nombre en singular normalmente.
+    Convenciones
+        Cuando crear el Modelo CLiente, Eloquent asume que la tabla se va a llamar clientes
+        Si el Modelo se llama Producto; Eloquent espera una tabla llamada productos.
+        Puede ser un problema llamar a un modelo con ejemplo Proveedor, por que Eloquent espera la tabla rpovedors,
+        pero se puede reescribir en el modelo.
+    Los modelos se importan en los controladores.
+    Es importante que los modelos tengan definido en fillable ya que deben tener los campos
+    espcificos en los que se escribira en la base de datos los registros, esto por medidas de seguridad del propio 
+    framework
+    Seguridad con los password
+        Es importante mencionar que en los modelos la seguridad con los pasword se definen aqui.
+        Laravel 10 
+            Podemos hashear el pasword desde el controller
+                use Illuminate\Support\Facades\Hash;
+                User::create([
+                    // Arreglos asociativos para obtener informacion del objeto es con request
+                    'name' => $request->name,
+                    'username' => $request->username,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password), // Aqui se integra la seguridad
+                ]);
+        Laravel 11
+            Podemos hashear desde el Modelo.
+                El siguinete cast ayuda a agregar caracteristicas a los datos 
+                por ejemplo password nos aporta la proteccion a las constraseñas con hashed
+                
+                protected function casts(): array
+                {
+                    return [
+                        'email_verified_at' => 'datetime',
+                        'password' => 'hashed',
+                    ];
+                }
+        

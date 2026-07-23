@@ -20,8 +20,8 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);//El metodo store es para almacenar informacion y el name lo tomara del primer get
 
 Route::get('/muro',[PostController::class, 'index'])
     ->name('posts.index')
     ->middleware('auth');
-    

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password','username',])]
+//#[Fillable(['name', 'email', 'password','username',])]
 /* 
 El fillable tambien puede definicer de esta manera
 protected $fillable = [
@@ -32,11 +32,17 @@ class User extends Authenticatable
      * El siguinete cast ayuda a agregar caracteristicas a los datos 
      * por ejemplo password nos aporta la proteccion a las constraseñas con hashed
      */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'username'
+    ];
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            //'password' => 'hashed',
         ];
-    }
+    }  
 }

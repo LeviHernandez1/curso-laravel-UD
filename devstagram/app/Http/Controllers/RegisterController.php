@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -33,10 +35,14 @@ class RegisterController extends Controller
         User::create([
             // Arreglos asociativos para obtener informacion del objeto es con request
             'name' => $request->name,
-            'username' => $request->username,
+            //Para poder obtener el Username en minusculas se puede hacer de la siguiente manera 
+            //'username' =>Str::lower($request->username),
+            //Para poder obtener el Username en minusculas y sin espacios se puede hacer de la siguiente manera como URL
+            //'username' =>Str::slug($request->username), // Se perdio el unique y pemite registros con el mismo nombre de usuario
+            'username' =>Str::lower($request->username),// Con lower logramos que no se pierda el unique y pero se pierde los guiones como url
             'email' => $request->email,
-            'password' => $request->password,
-            //'password' => Hash::make($request->password),
+            //'password' => $request->password,
+            'password' => Hash::make($request->password),
         ]);
     }
 }

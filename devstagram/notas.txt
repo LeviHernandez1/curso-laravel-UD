@@ -333,3 +333,35 @@ Datos unitcos, consulta desde la base de datos.
             'username' =>Str::slug($request->username),
         ]);
 
+Autenticaciones de usuarios
+    Laravel ya nos proporciona la autenticacion de usuarios
+    Ademas nos proporciona helpers que nos apoyan en la comprobacion de un usuario autenticado.
+
+    Los datos del usuario los guarda en user
+    //Autenticar un usuario
+        //Helper auth() y funcion para autenticar 
+        auth()->attempt([
+            'email'=> $request->email,
+            'password'=> $request->password,
+        ]);
+    // Otra forma de autenticar al usuario
+        auth()->attempt($request->only('email', 'password'));
+
+Protecciones de endpoind
+
+
+Imprimr valores traidos desde la base de datos como el nombre de usuario:
+<div class="md:w-8/12 lg:w-6/12 px-5">
+    <p>{{ auth()->user()->username }}</p>
+</div>
+
+Proteccion de rutas con middleware
+El middleware auth funciona exactamente como un "guardia de seguridad" en la puerta de la ruta
+    Antes se usaba esto en el controlador:
+        //Constructor instanciado de PostCOntroller
+            public function __construct()
+            {   
+                // Esto protege que un usuario debe estar autenticado para poder ver el contenido
+                $this->middleware('auth');
+            }
+    Ahora se impelmeta desde la ruta en el archivo web.php

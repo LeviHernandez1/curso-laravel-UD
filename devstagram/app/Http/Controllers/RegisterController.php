@@ -44,6 +44,16 @@ class RegisterController extends Controller
             //'password' => $request->password,
             'password' => Hash::make($request->password),
         ]);
+
+        //Autenticar un usuario
+        //Helper auth() y funcion para autenticar 
+        /* auth()->attempt([
+            'email'=> $request->email,
+            'password'=> $request->password,
+        ]); */
+        // Otra forma de autenticar al usuario
+        auth()->attempt($request->only('email', 'password'));
+
         // Redireccionar
         //Laravel ya cuenta con la funcionalidad de redireccionamiento a rutas usando un helper.
         return redirect()->route('posts.index');

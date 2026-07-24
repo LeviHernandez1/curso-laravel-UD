@@ -382,3 +382,25 @@ Autenticacion para mostrar en el blade con DIRECTIVAS
             <p>No Autenticado</p>
         @endguest
 
+Funcionalidad de recordad secion en las cockies
+en el blade el metodo de recordar se llamara remember.
+Con estos metodos laravel ayuda a generar el toquen de remember a la base de datos guardando sus credenciales.
+Podemos verlo al inspeccionar elementos y ver en la parte de Almacenamiento/Cookies
+
+    Para saber que agregar si el usuario lo desea se asigna el nombre remember
+        <div class="md-5">
+            <input type="checkbox" name="remember"> 
+            <label class="text-gray-500 text-sm">
+                Mantener mi sesión abierta
+            </label>
+        </div>
+
+    Para el login controller se el agrega la entrada del input de validacion remember
+        // Esta autenticacion nos dara un valor true o false por lo que se negara por si no esta autenticado por no cumplir dos validaciones
+        if(!auth()->attempt($request->only('email', 'password'), $request->remember)) {
+            // Redireccionamiento de no estar autenticado correctamente con back, con with introducimos el nombre de indentificacion del metodo y el mensaje que mostrar
+            // Esto es una manera de mostrar informacion en la vista.
+            return back()->with('mensaje', 'Credenciales Incorrectas');
+        }
+        // De ser correcto lo redigirimos a su perfil solicitado
+        return redirect()->route('posts.index');

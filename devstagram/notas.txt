@@ -365,3 +365,20 @@ El middleware auth funciona exactamente como un "guardia de seguridad" en la pue
                 $this->middleware('auth');
             }
     Ahora se impelmeta desde la ruta en el archivo web.php
+
+Autenticacion para mostrar en el blade con DIRECTIVAS
+    Podemos usar una directiva de esta manera para mostar informacion si un usuario esta utenticado.
+        {{-- Directiva mas un helper --}}
+        @if (auth()->user())
+            <p>Autenticado</p>
+        @else
+            <p>No autenticado</p>
+        @endif
+    Podemos hacer lo mismo de la siguinete manera:
+        @auth
+            <p>Autenticado</p>
+        @endauth
+        @guest
+            <p>No Autenticado</p>
+        @endguest
+

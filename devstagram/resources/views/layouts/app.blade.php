@@ -14,14 +14,44 @@
                 <h1 class="text-3xl font-black">
                     DevStagram
                 </h1>
-                <nav class="flex gap-2 items-center" >
-                    <a class="font-bold uppercase text-gray-600 text-sm" href="#">
-                        Login
-                    </a>
-                    <a href="{{route('register')}}" class="font-bold uppercase text-gray-600 text-sm">
-                        Crear Cuenta
-                    </a>
-                </nav>
+
+                {{-- Directiva mas un helper --}}
+                {{-- @if (auth()->user())
+                    <p>Autenticado</p>
+                @else
+                    <p>No autenticado</p>
+                @endif --}}
+
+                {{-- Otra opcion, si ya esta autenticado se imprime esto--}}
+                @auth
+                    {{-- <p>Autenticado</p> --}}
+                    <nav class="flex gap-2 items-center" >
+                        <a class="font-bold text-gray-600 text-sm" href="#">
+                            Hola: <span class="font-normal">{{ auth()->user()->username }}</span>
+                        </a>
+
+                        <form method="POST" action="{{route('logout')}}">
+                            @csrf
+                            <button type="submit" class="font-bold uppercase text-gray-600 text-sm">
+                                Cerrar Sesión
+                            </button>
+                        </form>
+                        
+                    </nav>
+                @endauth
+                {{-- Si no esta autenticado mostramos la navegacion --}}
+                @guest
+                    {{-- <p>No Autenticado</p> --}}
+                    <nav class="flex gap-2 items-center" >
+                        <a class="font-bold uppercase text-gray-600 text-sm" href="#">
+                            Login
+                        </a>
+                        <a href="{{route('register')}}" class="font-bold uppercase text-gray-600 text-sm">
+                            Crear Cuenta
+                        </a>
+                    </nav>
+                @endguest
+
             </div>        
         </header>
         <main class="p-5 bg-blue-100">
